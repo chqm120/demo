@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd  
+        ">   
+	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+	<dubbo:application name="order-center-front" owner="order-center-front"/>
+	<dubbo:consumer timeout="30000" retries="0"></dubbo:consumer>
+	
+	<!-- 使用zookeeper暴漏服务 --> 
+    <dubbo:registry id="ordercenter-call-api" protocol="zookeeper" address="zookeeper://172.24.2.22:2188?backup=172.24.2.23:2188,172.24.2.24:2188" />
+	<dubbo:registry id="wallet"  protocol="zookeeper" address="zookeeper://172.24.2.22:2188?backup=172.24.2.23:2188,172.24.2.24:2188" />
+	<!-- ===================================================================================== -->
+	<!-- 订单接口 -->
+	<dubbo:reference 
+		id="orderFacade" 
+		interface="com.wangyin.ordercenter.api.OrderFacade" 
+		registry="ordercenter-call-api"
+	/>
+	<!-- 网银+相关接口 -->
+	<dubbo:reference 
+		id="wangyinFacade" 
+		interface="com.wangyin.ordercenter.api.WangyinFacade" 
+		registry="ordercenter-call-api"
+	/>
+	<!-- 序列号接口 -->
+	<dubbo:reference 
+		id="serialNumberFacade" 
+		interface="com.wangyin.ordercenter.api.SerialNumberFacade" 
+		registry="ordercenter-call-api"
+	/>
+	<!-- 确认订单接口 -->
+	<dubbo:reference 
+		id="orderConfirmFacade" 
+		interface="com.wangyin.ordercenter.api.OrderConfirmFacade" 
+		registry="ordercenter-call-api"
+	/>
+		<!-- 钱包收银台服务 -->
+	<dubbo:reference 
+		id="walletCashierFacade" 
+		interface="com.wangyin.ordercenter.api.WalletCashierFacade" 
+		registry="ordercenter-call-api"
+	/>
+	<!-- ===================================================================================== -->
+	<!-- “商品服务”商品详情接口 -->
+	<dubbo:reference 
+		id="skuProductInfoFacade" 
+		interface="com.wangyin.card.sku.facade.SkuProductInfoFacade" 
+		registry="ordercenter-call-api"
+	/>
+	<!-- 库存中心接口  -->
+	<dubbo:reference 
+		id="stockApiFacade" 
+		interface="com.wangyin.card.cardstock.api.stockSell.StockApiFacade" 
+		registry="ordercenter-call-api"
+	/>
+	<!-- ===================================================================================== -->
+	<!-- 商户接口 -->
+	<dubbo:reference 
+		id="merchantFacade" 
+		interface="com.wangyin.card.merchant.api.facade.MerchantFacade" 
+		registry="ordercenter-call-api"
+	/>
+	<!-- 快递接口 -->
+	<dubbo:reference 
+		id="expressFacade" 
+		interface="com.wangyin.card.merchant.api.facade.ExpressFacade" 
+		registry="ordercenter-call-api"
+	/>
+	<!-- 发票相关接口 -->
+	<dubbo:reference 
+		id="invoiceFacade" 
+		interface="com.wangyin.card.merchant.api.facade.InvoiceFacade" 
+		registry="ordercenter-call-api"
+	/>
+	<!-- 库存接口 -->
+	<dubbo:reference 
+		id="stockInfoFacade" 
+		interface="com.wangyin.card.cardstock.api.stockSell.StockInfoFacade" 
+		registry="ordercenter-call-api"
+	/>
+	<!-- ===================================================================================== -->
+	<!-- “抢吧”收货地址相关接口 -->
+	<dubbo:reference 
+		id="userAddressService" 
+		interface="com.wangyin.qiang.api.UserAddressService" 
+		registry="ordercenter-call-api"
+	/>
+	<!-- 卡产品中心相关接口 -->
+	<dubbo:reference 
+		id="productCardInfoFacade" 
+		interface="com.wangyin.card.cardproduct.api.facade.ProductCardInfoFacade" 
+		registry="ordercenter-call-api"
+	/>
+	<dubbo:reference 
+		id="productDeviceCrytoFacade" 
+		interface="com.wangyin.card.cardproduct.api.facade.ProductDeviceCrytoFacade" 
+		registry="ordercenter-call-api"
+	/>
+	
+	<dubbo:reference 
+		id="userBaseFacade"
+		interface="com.wangyin.card.user.api.facade.UserBaseFacade" 
+		registry="ordercenter-call-api" />
+		
+	<!-- 实名认证校验 -->
+	<dubbo:reference 
+		id="customerCertificateFacade" 
+		check="false" 
+		registry="wallet" 
+		interface="com.wangyin.customer.api.CustomerCertificateFacade" version="1.1.6"/>
+		
+	<!-- 风控接口 -->
+	<dubbo:reference
+		registry="wallet"
+		id="jeepRequestFacade"
+		interface="com.jd.payment.risk.jeep.service.JeepRequestFacade"  check="false"   version="2.0.1"  />
+
+	<!-- 远端登录验证 -->
+	<dubbo:reference 
+		id="remoteLoginFacade"
+		interface="com.wangyin.passport.checkLogin.RemoteLoginFacade"  check="false"  
+		registry="ordercenter-call-api" />
+
+	<!-- 活动服务 -->
+	<dubbo:reference 
+		id="activityBaseFacade"
+		interface="com.wangyin.card.activity.api.ActivityBaseFacade" check="false" 
+		registry="ordercenter-call-api"/>
+</beans>

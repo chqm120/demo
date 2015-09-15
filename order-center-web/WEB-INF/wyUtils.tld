@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+    version="2.1">
+    
+  <description>wyUtils JSPTag Library</description>
+  <tlib-version>1.0</tlib-version>
+  <short-name>wyUtils</short-name>
+  <uri>/wyUtilsTag</uri>
+  
+	<tag>
+		<name>subHide</name>
+		<tag-class>com.wangyin.ordercenter.front.utils.TagSubHide</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>numStr</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>start</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>end</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

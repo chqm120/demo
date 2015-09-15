@@ -1,0 +1,219 @@
+body {
+    padding-bottom: 0;
+}
+.record-list {
+    /*background: #fff;*/
+}
+
+.record-list > .record-date {
+    height: 35px;
+    line-height: 35px;
+    background: #f5f5f5;
+    text-indent: 15px;
+    padding: 0;
+    margin: 0;
+    border-bottom: none;
+    border-top: 1px solid #fff;
+    margin-top: -1px;
+}
+
+.record-list .record-item {
+    display: -webkit-box;
+    padding: 15px;
+    padding-left: 0;
+    margin-left: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.record-list > li:last-child {
+    border: none;
+}
+
+.record-detail .record-icon,
+.record-list .record-icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    background-size: 40px;
+    border-radius: 50%;
+}
+
+.record-main {
+    height: 40px;
+    -webkit-box-flex: 1;
+}
+
+.record-list .record-aside {
+}
+
+.record-category {
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: .8
+}
+.record-aside {
+    height: 40px;
+    line-height: 1.2;
+    text-align: right;
+}
+
+.record-list time,
+.record-aside > .status {
+    display: block;
+    color: #989898;
+    margin-top: 7px;
+}
+.load-more {
+    text-align: center;
+    padding: 15px 0;
+    color: #989898;
+}
+
+.vh {
+    visibility: hidden;
+}
+
+
+
+/**
+ *
+ * 交易记录 详情
+ *
+ */
+
+.record-detail-body {
+    background: #eee;
+}
+
+.record-detail {
+    background: #fff;
+    padding: 0 10px;
+}
+
+.record-detail dl {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.record-detail-main {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.record-detail-main dl {    
+    height: 60px;
+    border-bottom: 1px solid #ddd;
+}
+
+.record-detail-footer {
+    padding: 20px 0;
+    /*font-size: 12px;*/
+    line-height: 2; 
+}
+
+.record-detail-footer dt {
+}
+
+.record-detail dt {
+    width: 100px;
+    color: #989898;
+}
+
+.record-detail dd {
+    -webkit-box-flex: 1;
+}
+
+.record-detail .amount {
+    font-size: 28px;
+}
+
+
+.record-detail-title {
+    font-weight: normal;
+    font-size: 17px;
+}
+
+.record-detail .record-icon {
+}
+
+.record-status {
+    /*width: 100%;*/
+    padding: 35px 30px 25px;
+    text-align: center;
+    /*background: #f1f1f1;*/
+    /*position: absolute;*/
+    bottom: 0;
+    left: 0;
+    font-family: "Microsoft YaHei",\5FAE\8F6F\96C5\9ED1;
+}
+.record-infoWarp{
+    text-align: left;
+    display: inline-block;
+}
+.record-status .title{
+    font-size: 18px;
+    color: #555;
+
+}
+.record-status .info{
+    font-size: 12px;
+    color: #989898;
+}
+.record-status .link{
+    margin-top: 10px;
+    /*margin-left: 50px;*/
+    color: #7b87a6;
+    font-size: 14px;
+    text-decoration: underline;
+}
+.subnav-tog {
+    display: inline-block;
+    color: rgba(0,0,0,0);
+    vertical-align: middle;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoxRDMzM0Q2RkQ0NUExMUU0OUUzOUY2QTY4QjY4Mjk1RSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxRDMzM0Q3MEQ0NUExMUU0OUUzOUY2QTY4QjY4Mjk1RSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjFEMzMzRDZERDQ1QTExRTQ5RTM5RjZBNjhCNjgyOTVFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjFEMzMzRDZFRDQ1QTExRTQ5RTM5RjZBNjhCNjgyOTVFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+1Ti3kgAAAGVJREFUeNqczNsNwCAIBVA+upejwWaORjGpsaU8lJvcRMAcYOYm7VKUQrH4GG0MxCtYxGZoLqvoBxu79/EU/WEaPEFNzAJ3UBfzwAgNsQi00BTLQI2m2A6oUcr+X5CHnLeZW4ABADfii5X8Y4TYAAAAAElFTkSuQmCC)
+        50% no-repeat;
+    background-size: 10px;
+    -webkit-transition: transform linear .2s;
+}
+
+.g-header.with-mask .subnav-tog {
+    -webkit-transform: rotate(180deg);
+}
+
+
+.empty-record {
+    display: block;
+    padding-top: 50px;
+    text-align: center;
+    background: #f1f1f1;
+}
+
+
+.empty-record::before {
+    width: 93px;
+    height: 93px;
+    content: '\20';
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    margin-bottom: 15px;
+    background: #fff url(../img/empty-record.png) 50% 50% no-repeat;
+    background-size: 47px 53px;
+}
+.status-tips{
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #999;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    margin-left: -140px;
+}
